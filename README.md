@@ -1,16 +1,33 @@
-# my_portfolio
+# CV Mobile Application
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Overview
+This Flutter mobile application prominently features my Full name,  Slack username, GitHub handle,and brief personal bio and some information about my CV .
 
-A few resources to get you started if this is your first Flutter project:
+# Table of Contents
+- Requirements
+- Usage
+  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Assumption
+Please note the following assumptions made while developing this application:
+
+I have a working Flutter development environment set up.
+
+
+## Requirements
+Requirements
+The application adheres to the following requirements:
+Full Name: This shows my name in full
+
+Slack Name: The application's main screen prominently displays your Slack name.
+
+Display Picture: Your Slack profile picture is integrated onto the main screen, ensuring it is clear and of high quality.
+
+Bio: A little information to get to know me.
+
+## Usage
+Users can interact with this app by using the 'edit' button to access my edit page
+
