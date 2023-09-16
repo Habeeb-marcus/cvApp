@@ -7,22 +7,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-   final CV cvData = CV(
-    fullName: 'Habeeb Makusota',
-    slackUsername: 'future_code',
-    githubHandle: 'Habeeb-marcus',
-    personalBio:
-        'I am a Flutter developer with a passion for building scalable and maintainable software solutions. I am a team player and I love to learn new things. I am a fast learner and I am always open to new opportunities.',
-  );
-   MyApp({super.key});
+   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
   
-      home:  HomePage(cvData: cvData),
+      home:  HomePage(),
     );
   }
 }

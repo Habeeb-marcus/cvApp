@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -24,24 +26,27 @@ class _EditPageState extends State<EditPage> {
 
   @override
   void initState(){
-    fullNameController.text = '${widget.cvData.fullName}';
-    slackUsernameController.text = '${widget.cvData.slackUsername}';
-    githubHandleController.text = '${widget.cvData.githubHandle}';
-    personalBioController.text = '${widget.cvData.personalBio}}';
-    //   fullNameController = TextEditingController(text: widget.cvData.fullName);
-    // slackUsernameController =
-    //     TextEditingController(text: widget.cvData.slackUsername);
-    // githubHandleController =
-    //     TextEditingController(text: widget.cvData.githubHandle);
-    // personalBioController =
-    //     TextEditingController(text: widget.cvData.personalBio);
+    setState(() {
+         fullNameController.text = '${widget.cvData.fullName}';
+      slackUsernameController.text = '${widget.cvData.slackUsername}';
+      githubHandleController.text = '${widget.cvData.githubHandle}';
+      personalBioController.text = '${widget.cvData.personalBio}}';
+    });
+
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        backgroundColor:  Color(0xffad9c00),
         title: Text('Edit Page'),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        )
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -51,6 +56,7 @@ class _EditPageState extends State<EditPage> {
               controller: fullNameController,
               decoration: InputDecoration(
                 labelText: 'Full Name',
+                suffixIcon: Icon(Icons.person),
               ),
             ),
             SizedBox(height: 16.0),
@@ -58,6 +64,8 @@ class _EditPageState extends State<EditPage> {
               controller: slackUsernameController,
               decoration: InputDecoration(
                 labelText: 'Slack Username',
+                
+               
               ),
             ),
             SizedBox(height: 16.0),
@@ -72,56 +80,50 @@ class _EditPageState extends State<EditPage> {
             ),
             TextFormField(
               controller: personalBioController,
-              maxLines: 4,
+              maxLines: 5,
               decoration: InputDecoration(
                 labelText: 'Personal Bio',
               ),
             ),  
-            GeneralTextField(
-              hintText: 'Personal Bio',
-              textController: personalBioController,
-              onChanged: (value) => setState(() {
-                // widget.cvData.fullName = fullNameController.text;
-                // widget.cvData.slackUsername = slackUsernameController.text;
-                // widget.cvData.githubHandle = githubHandleController.text;
-                widget.cvData.personalBio = personalBioController.text;
-              
-              }),
-            ),
         
        
           
-            SizedBox(height: 16.0),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.33),
 
-            ElevatedButton(
-              onPressed: (){
-                setState(() {
-                  widget.cvData.fullName = fullNameController.text;
-                  widget.cvData.slackUsername = slackUsernameController.text;
-                  widget.cvData.githubHandle = githubHandleController.text;
-                  widget.cvData.personalBio = personalBioController.text;
-                  CV(
-                    fullName: fullNameController.text,
-                    slackUsername: slackUsernameController.text,
-                    githubHandle: githubHandleController.text,
-                    personalBio: personalBioController.text,
-                  );
-                });
-                Navigator.pop(context, CV(
-                    fullName: fullNameController.text,
-                    slackUsername: slackUsernameController.text,
-                    githubHandle: githubHandleController.text,
-                    personalBio: personalBioController.text,
-                  ));
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: ElevatedButton(
+                onPressed: (){
+                    print(
+                        '------>>>${widget.cvData.fullName} after chnges has been made');
+                  setState(() {
+                  
+                    widget.cvData.fullName = fullNameController.text;
+                    widget.cvData.slackUsername = slackUsernameController.text;
+                    widget.cvData.githubHandle = githubHandleController.text;
+                    widget.cvData.personalBio = personalBioController.text;
+                    CV(
+                      fullName: fullNameController.text,
+                      slackUsername: slackUsernameController.text,
+                      githubHandle: githubHandleController.text,
+                      personalBio: personalBioController.text,
+                    );
+                  });
+                  Navigator.pop(context, CV(
+                      fullName: fullNameController.text,
+                      slackUsername: slackUsernameController.text,
+                      githubHandle: githubHandleController.text,
+                      personalBio: personalBioController.text,
+                    ));
             
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ViewPage(cv: cv),
-                //   ),
-                // );
-              },
-              child: Text('Save CV'),
+                },
+                child: Text('Save CV'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Color(0xffad9c00),
+                  ),
+                )
+              ),  
             ),
           ],
         ),
